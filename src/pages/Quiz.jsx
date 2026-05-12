@@ -110,7 +110,7 @@ function Quiz() {
               border: 'none'
             }}
           >
-            {currentQuestion + 1 === questions.length ? 'Voir mes résultats 🌸' : 'Suivant →'}
+            {currentQuestion + 1 === questions.length ? 'Voir mes résultats ' : 'Suivant →'}
           </button>
         </div>
 

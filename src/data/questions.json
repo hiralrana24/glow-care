@@ -3,31 +3,31 @@
     "id": 1,
     "question": "Quel est ton type de peau ?",
     "options": [
-      { "label": "💧 Sèche", "value": "seche" },
-      { "label": "✨ Grasse", "value": "grasse" },
-      { "label": "⚖️ Mixte", "value": "mixte" },
-      { "label": "🌸 Sensible", "value": "sensible" },
-      { "label": "🙂 Normale", "value": "normale" }
+      { "label": "Seche", "value": "seche" },
+      { "label": "Grasse", "value": "grasse" },
+      { "label": "Mixte", "value": "mixte" },
+      { "label": "Sensible", "value": "sensible" },
+      { "label": "Normale", "value": "normale" }
     ]
   },
   {
     "id": 2,
-    "question": "Quel est ton problème principal ?",
+    "question": "Quel est ton probleme principal ?",
     "options": [
-      { "label": "💦 Déshydratation", "value": "deshydratation" },
-      { "label": "🔴 Acné", "value": "acne" },
-      { "label": "🌑 Taches", "value": "taches" },
-      { "label": "🌹 Rougeurs", "value": "rougeurs" },
-      { "label": "⏳ Rides", "value": "rides" }
+      { "label": "Deshydratation", "value": "deshydratation" },
+      { "label": "Acne", "value": "acne" },
+      { "label": "Taches", "value": "taches" },
+      { "label": "Rougeurs", "value": "rougeurs" },
+      { "label": "Rides", "value": "rides" }
     ]
   },
   {
     "id": 3,
     "question": "Quel est ton budget mensuel ?",
     "options": [
-      { "label": "🌱 Moins de 20€", "value": "petit" },
-      { "label": "🌿 Entre 20€ et 50€", "value": "moyen" },
-      { "label": "🌸 Plus de 50€", "value": "confort" }
+      { "label": "Moins de 20 euros", "value": "petit" },
+      { "label": "Entre 20 et 50 euros", "value": "moyen" },
+      { "label": "Plus de 50 euros", "value": "confort" }
     ]
   }
 ]
