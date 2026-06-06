@@ -1,5 +1,14 @@
 import React from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
+import nivea from '../assets/nivea.jpg';
+import garnier from '../assets/garnier.jpg';
+import larochePosay from '../assets/larochePosay.jpg';
+import cerave from '../assets/cerave.jpg';
+import theOrdinary from '../assets/theOrdinary.jpg';
+import avene from '../assets/avene.jpg';
+import paulasChoice from '../assets/paulasChoice.jpg';
+import drunkElephant from '../assets/drunkElephant.jpg';
+import tatcha from '../assets/paulasChoice.jpg';
 
 const routines = {
   seche: {
@@ -76,20 +85,28 @@ const routines = {
 
 const produits = {
   petit: [
-    { nom: 'Nivea Soft', prix: '3€', type: 'Creme hydratante' },
-    { nom: 'Garnier Micellar Water', prix: '5€', type: 'Eau micellaire' },
-    { nom: 'La Roche-Posay Toleriane', prix: '12€', type: 'Nettoyant' },
+    { nom: 'Nivea Soft', prix: '3€', type: 'Creme hydratante', image: nivea },
+    { nom: 'Garnier Micellar Water', prix: '5€', type: 'Eau micellaire', image: garnier },
+    { nom: 'La Roche-Posay Toleriane', prix: '12€', type: 'Nettoyant', image: larochePosay },
   ],
   moyen: [
-    { nom: 'CeraVe Hydrating Cleanser', prix: '15€', type: 'Nettoyant' },
-    { nom: 'The Ordinary Hyaluronic Acid', prix: '8€', type: 'Serum' },
-    { nom: 'Avene Creme Legere', prix: '18€', type: 'Hydratant' },
+    { nom: 'CeraVe Hydrating Cleanser', prix: '15€', type: 'Nettoyant', image: cerave },
+    { nom: 'The Ordinary Hyaluronic Acid', prix: '8€', type: 'Serum', image: theOrdinary },
+    { nom: 'Avene Creme Legere', prix: '18€', type: 'Hydratant', image: avene },
   ],
   confort: [
-    { nom: 'Paula\'s Choice BHA', prix: '35€', type: 'Exfoliant' },
-    { nom: 'Drunk Elephant Serum C', prix: '45€', type: 'Serum Vitamine C' },
-    { nom: 'Tatcha Water Cream', prix: '55€', type: 'Hydratant premium' },
+    { nom: 'Paula\'s Choice BHA', prix: '35€', type: 'Exfoliant', image: paulasChoice },
+    { nom: 'Drunk Elephant Serum C', prix: '45€', type: 'Serum Vitamine C', image: drunkElephant },
+    { nom: 'Tatcha Water Cream', prix: '55€', type: 'Hydratant premium', image: tatcha },
   ],
+};
+
+const conseilsEmotionnels = {
+  stresse: 'Le stress impacte ta peau. Essaie la meditation ou une promenade pour te detendre.',
+  fatigue: 'La fatigue se voit sur la peau. Accorde-toi du repos et dors suffisamment.',
+  heureux: 'Super humeur ! Continue comme ca, le bonheur se voit sur le visage.',
+  anxieux: 'L\'anxiete peut provoquer des imperfections. Prends le temps de respirer profondement.',
+  calme: 'Ton calme interieur se reflete sur ta peau. Continue a prendre soin de toi.',
 };
 
 function Results() {
@@ -98,7 +115,8 @@ function Results() {
   const answers = location.state?.answers || {};
 
   const typePeau = answers[0] || 'normale';
-  const budget = answers[2] || 'moyen';
+  const etatEmotionnel = answers[2] || 'calme';
+  const budget = answers[3] || 'moyen';
   const routine = routines[typePeau];
   const produitsRecommandes = produits[budget];
 
@@ -172,6 +190,7 @@ function Results() {
             {produitsRecommandes.map((p, i) => (
               <div key={i} className="col-md-4">
                 <div className="p-3 rounded-3 text-center" style={{ backgroundColor: '#fdf0f8' }}>
+                  <img src={p.image} alt={p.nom} style={{ width: '80px', height: '80px', objectFit: 'contain', marginBottom: '8px' }} />
                   <p className="fw-bold mb-1" style={{ fontSize: '13px', color: '#5a2d6e' }}>{p.nom}</p>
                   <p className="mb-1" style={{ fontSize: '12px', color: '#888' }}>{p.type}</p>
                   <span className="badge" style={{ backgroundColor: '#d060a0', color: 'white' }}>{p.prix}</span>
@@ -186,30 +205,35 @@ function Results() {
           <p className="mb-0" style={{ color: '#888', fontSize: '13px' }}>{routine.conseil}</p>
         </div>
 
-        {/* Conseils bien-etre */}
-<div className="p-4 rounded-4 mb-4" style={{ border: '1px solid #e8c0e0', backgroundColor: 'white' }}>
-  <p className="fw-bold mb-3" style={{ color: '#5a2d6e' }}>Conseils bien-etre</p>
-  <div className="row g-3">
-    <div className="col-md-4">
-      <div className="p-3 rounded-3 text-center" style={{ backgroundColor: '#fdf0f8' }}>
-        <p className="fw-bold mb-1" style={{ fontSize: '13px', color: '#5a2d6e' }}>Sommeil</p>
-        <p className="mb-0" style={{ fontSize: '12px', color: '#888' }}>Dors au moins 7 a 8 heures par nuit. Le sommeil repare ta peau en profondeur pendant la nuit.</p>
-      </div>
-    </div>
-    <div className="col-md-4">
-      <div className="p-3 rounded-3 text-center" style={{ backgroundColor: '#fdf0f8' }}>
-        <p className="fw-bold mb-1" style={{ fontSize: '13px', color: '#5a2d6e' }}>Hydratation</p>
-        <p className="mb-0" style={{ fontSize: '12px', color: '#888' }}>Bois au moins 1,5L d'eau par jour. Une bonne hydratation se voit directement sur ta peau.</p>
-      </div>
-    </div>
-    <div className="col-md-4">
-      <div className="p-3 rounded-3 text-center" style={{ backgroundColor: '#fdf0f8' }}>
-        <p className="fw-bold mb-1" style={{ fontSize: '13px', color: '#5a2d6e' }}>Sport</p>
-        <p className="mb-0" style={{ fontSize: '12px', color: '#888' }}>Fais 30 minutes d'activite physique par jour. Le sport ameliore la circulation et l'eclat de la peau.</p>
-      </div>
-    </div>
-  </div>
-</div>
+        <div className="p-4 rounded-4 mb-4" style={{ border: '1px solid #e8c0e0', backgroundColor: 'white' }}>
+          <p className="fw-bold mb-3" style={{ color: '#5a2d6e' }}>Conseils bien-etre</p>
+          <div className="row g-3">
+            <div className="col-md-3">
+              <div className="p-3 rounded-3 text-center" style={{ backgroundColor: '#fdf0f8' }}>
+                <p className="fw-bold mb-1" style={{ fontSize: '13px', color: '#5a2d6e' }}>Sommeil</p>
+                <p className="mb-0" style={{ fontSize: '12px', color: '#888' }}>Dors au moins 7 a 8 heures par nuit.</p>
+              </div>
+            </div>
+            <div className="col-md-3">
+              <div className="p-3 rounded-3 text-center" style={{ backgroundColor: '#fdf0f8' }}>
+                <p className="fw-bold mb-1" style={{ fontSize: '13px', color: '#5a2d6e' }}>Hydratation</p>
+                <p className="mb-0" style={{ fontSize: '12px', color: '#888' }}>Bois au moins 1,5L d'eau par jour.</p>
+              </div>
+            </div>
+            <div className="col-md-3">
+              <div className="p-3 rounded-3 text-center" style={{ backgroundColor: '#fdf0f8' }}>
+                <p className="fw-bold mb-1" style={{ fontSize: '13px', color: '#5a2d6e' }}>Sport</p>
+                <p className="mb-0" style={{ fontSize: '12px', color: '#888' }}>Fais 30 minutes d'activite par jour.</p>
+              </div>
+            </div>
+            <div className="col-md-3">
+              <div className="p-3 rounded-3 text-center" style={{ backgroundColor: '#fdf0f8' }}>
+                <p className="fw-bold mb-1" style={{ fontSize: '13px', color: '#5a2d6e' }}>Etat emotionnel</p>
+                <p className="mb-0" style={{ fontSize: '12px', color: '#888' }}>{conseilsEmotionnels[etatEmotionnel]}</p>
+              </div>
+            </div>
+          </div>
+        </div>
 
         <div className="d-flex justify-content-center gap-3">
           <button

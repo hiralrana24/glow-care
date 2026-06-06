@@ -23,6 +23,17 @@
   },
   {
     "id": 3,
+    "question": "Comment tu te sens en ce moment ?",
+    "options": [
+      { "label": "Stresse(e)", "value": "stresse" },
+      { "label": "Fatigue(e)", "value": "fatigue" },
+      { "label": "Heureux(se)", "value": "heureux" },
+      { "label": "Anxieux(se)", "value": "anxieux" },
+      { "label": "Calme", "value": "calme" }
+    ]
+  },
+  {
+    "id": 4,
     "question": "Quel est ton budget mensuel ?",
     "options": [
       { "label": "Moins de 20 euros", "value": "petit" },
